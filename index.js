@@ -1,3 +1,73 @@
+document.addEventListener('DOMContentLoaded', () => {
+
+    // Scores
+    let playerScore = 0;
+    let computerScore = 0;
+
+    // Get results div
+    const resultDiv = document.querySelector('#result');
+
+    // Score elems
+    const playerScoreEl = document.querySelector('#player-score');
+    const computerScoreEl = document.querySelector('#computer-score');
+
+    // Get all game buttons
+    const gameBtns = document.querySelectorAll('.game-btn');
+    gameBtns.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            // Get player selection
+            const playerSelection = e.currentTarget.dataset.playerSelection;
+            console.log(playerSelection);
+
+            // Play a round
+            const result = playRound(playerSelection);
+
+            switch (result) {
+                case 'won':
+                    resultDiv.textContent = 'Round Won!';
+                    resultDiv.style.color = 'green';
+                    playerScore++;
+                    break;
+                
+                case 'lost':
+                    resultDiv.textContent = 'Round Lost!';
+                    resultDiv.style.color = 'red';
+                    computerScore++;
+                    break;
+
+                case 'tie':
+                    resultDiv.textContent = 'Round Tie!';
+                    resultDiv.style.color = 'blue';
+                    break;
+            }
+
+            // Set score
+            playerScoreEl.textContent = playerScore;
+            computerScoreEl.textContent = computerScore;
+
+            if (playerScore === 5 || computerScore === 5) {
+                // Announce winner
+                if (playerScore > computerScore) {
+                    alert('Player Won!')
+                }
+                else if (playerScore < computerScore) {
+                    alert('Computer Won!')
+                }
+                else {
+                    alert('It is a Tie!')
+                }
+                // Reset
+                playerScore = computerScore = 0;
+                playerScoreEl.textContent = '0';
+                computerScoreEl.textContent = '0';
+                resultDiv.textContent = '';
+            }  
+        })
+    })
+});
+
+
+
 // Get computer's choice 
 function getComputerChoice() {
     // Create random num between 1 and 10

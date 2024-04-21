@@ -5,9 +5,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rock Paper Scrissors</title>
 </head>
-<body>
-    <button onclick="playGame()">Play Game</button>
-    <p>Please open up console to see results and scores.</p>
+<body style="width: fit-content; margin: 5em auto; text-align: center;">
+    
+    <!-- Buttons -->
+    <h1>Select your choice!</h1>
+    <button class="game-btn" data-player-selection="rock">Rock</button>
+    <button class="game-btn" data-player-selection="paper">Paper</button>
+    <button class="game-btn" data-player-selection="scissors">Scissors</button>
+
+    <!-- Results -->
+    <div id="result"></div>
+
+    <h2>Scores:</h2>
+    <table style="width: fit-content; margin: 0 auto; border-collapse: collapse;" border="1">
+        <thead>
+            <tr>
+                <th>Player</th>
+                <th>Computer</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td id="player-score">0</td>
+                <td id="computer-score">0</td>
+            </tr>
+        </tbody>
+    </table>
+
     <script src="./helpers.js"></script>
     <script src="./index.js"></script>
 </body>
